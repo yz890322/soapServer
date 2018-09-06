@@ -5,6 +5,7 @@ class FaceCompService
 {
 public:
     FaceCompService();
+    ~FaceCompService();
 };
 
 #endif // FACECOMPSERVICE_H

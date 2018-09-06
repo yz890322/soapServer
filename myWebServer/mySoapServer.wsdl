@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="mySoapServer"
+  targetNamespace="http://192.168.9.116:8181/mySoapServer.wsdl"
+  xmlns:tns="http://192.168.9.116:8181/mySoapServer.wsdl"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:mySoapServer"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="urn:mySoapServer"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns="urn:mySoapServer"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <!-- operation request element -->
+    <element name="FaceDetect">
+      <complexType>
+          <sequence>
+            <element name="inXmlData" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__FaceDetect::inXmlData -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="FaceDetectResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__FaceDetect::result -->
+          </sequence>
+      </complexType>
+    </element>
+  </schema>
+
+</types>
+
+<message name="FaceDetectRequest">
+  <part name="Body" element="ns:FaceDetect"/><!-- ns__FaceDetect::ns__FaceDetect -->
+</message>
+
+<message name="FaceDetectResponse">
+  <part name="Body" element="ns:FaceDetectResponse"/>
+</message>
+
+<portType name="mySoapServerPortType">
+  <operation name="FaceDetect">
+    <documentation>Service definition of function ns__FaceDetect</documentation>
+    <input message="tns:FaceDetectRequest"/>
+    <output message="tns:FaceDetectResponse"/>
+  </operation>
+</portType>
+
+<binding name="mySoapServer" type="tns:mySoapServerPortType">
+  <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="FaceDetect">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="mySoapServer">
+  <documentation>gSOAP 2.8.70 generated service definition</documentation>
+  <port name="mySoapServer" binding="tns:mySoapServer">
+    <SOAP:address location="http://192.168.9.116:8181/mySoapServer.cgi"/>
+  </port>
+</service>
+
+</definitions>

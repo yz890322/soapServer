@@ -1,13 +1,16 @@
 #ifndef MAINCLASS_H
 #define MAINCLASS_H
 
+#include <string>
+#include "recvnetrequest.h"
+
 class MainClass
 {
 public:
     MainClass();
     ~MainClass();
     int readSysCfg();
-    RecvRequest *m_pRecvRequest;
+    RecvNetRequest *m_pRecvNetRequest;
 private:
     int m_nWebListenPort;
     int m_nTcpListenPort;

@@ -1,13 +1,20 @@
 #include <iostream>
+#include "mainclass.h"
+#include "packdata.h"
 
 using namespace std;
-
-int g_nFaceCompSvs;
 
 int main()
 {
     MainClass *p = new MainClass;
-    cout << "Hello World!" << endl;
+    while(1)
+    {
+        Sleep(1000);
+    }
+    delete p;
+    p = NULL;
+    cout << "webService end!" << endl;
     return 0;
 }
+
 
